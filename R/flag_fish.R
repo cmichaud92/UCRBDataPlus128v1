@@ -34,7 +34,7 @@ flag_fish <- function(.data) {
                      recap_134_flg = ifelse(!is.na(pit_134) & is.na(recap_134),
                                             "FLAG",
                                             ""),
-                     spp_flg = ifelse(species %in% UCRBDataTools::streams_dimensions$vec_spp, "", "FLAG"),
+                     spp_flg = ifelse(species %in% UCRBDataTools::dimension_streams$vec_spp, "", "FLAG"),
                      len_flg = ifelse(species %in% UCRBDataTools::vec_spp$end & is.na(tot_length) |
                                         species %!in% c(UCRBDataTools::vec_spp$end, "SM", "WE", "NP") |
                                         (species %in% c(UCRBDataTools::vec_spp$end, "SM", "WE", "NP") &
@@ -46,7 +46,7 @@ flag_fish <- function(.data) {
                                      "FLAG",
                                      ""),
                      disp_flg = ifelse(is.na(disp) |
-                                         disp %!in% UCRBDataTools::streams_dimensions$vec_disp |
+                                         disp %!in% UCRBDataTools::dimension_streams$vec_disp |
                                          (species %in% UCRBDataTools::vec_spp$end & disp != "RA"), "FLAG", ""),
                      rmi_flg = ifelse(is.na(rmi) |
                                         rmi < end_rmi |

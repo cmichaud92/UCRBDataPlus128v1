@@ -11,10 +11,10 @@ flag_site <- function(.data) {
 
   out <- .data |>
     dplyr::mutate(rvr_flg = ifelse(!is.na(river) &
-                                    river %in% UCRBDataTools::streams_dimensions$vec_rvr, "", "FLAG"),
+                                    river %in% UCRBDataTools::dimension_streams$vec_rvr, "", "FLAG"),
                   rch_flg = ifelse(is.na(reach) |
                                     (!is.na(reach) &
-                                       reach %in% UCRBDataTools::streams_dimensions$vec_rch), "", "FLAG"),
+                                       reach %in% UCRBDataTools::dimension_streams$vec_rch), "", "FLAG"),
                   date_flg = ifelse(is.na(startdatetime) |
                                      is.na(enddatetime) |
                                      as.numeric(difftime(enddatetime, startdatetime, units = "sec")) <= el_sec,
@@ -26,7 +26,7 @@ flag_site <- function(.data) {
                                   "FLAG",
                                   ""),
                   gear_flg = ifelse(!is.na(gear) &
-                                     gear %in% UCRBDataTools::streams_dimensions$vec_gear, "", "FLAG"),
+                                     gear %in% UCRBDataTools::dimension_streams$vec_gear, "", "FLAG"),
                   key_flg = ifelse(is.na(key_a), "FLAG", ""),
 
                   effort_flg = ifelse(gear %in% c("EB", "EF", "EH", "EL", "EN", "EP", "ER", "ES", "EU") &
